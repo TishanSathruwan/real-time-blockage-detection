@@ -38,6 +38,7 @@ while True:
     results = model.forward(frame)
     
     depth_frame = results[1]
+    depth_frame = cv2.applyColorMap(np.uint8(depth_frame), cv2.COLORMAP_INFERNO)
     
     # Draw bounding boxes and create binary mask
     if len(results[0][0].boxes.xyxy.cpu().numpy()) > 0:
